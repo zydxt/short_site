@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>短网址转换</title>
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in short_form %}
+        <div>
+            {{ field.label_tag }} {{ field }}
+            {{ field.errors }}
+            {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <input type="submit" value="提交">
+    </form>
+
+    <p>{{ result.msg }}</p>
+</head>
+<body>
+
+</body>
+</html>
